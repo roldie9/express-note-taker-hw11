@@ -7,8 +7,11 @@ const PORT = process.env.PORT || 3000;
 //sets up body parsing, static, and routes' middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("./public"))
 
+//points server to "route" files and gives server "map" for user to request data
+//require("./public")(app);
+//require("./public/index.html")(app);
 
 //starts the server on the port
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
