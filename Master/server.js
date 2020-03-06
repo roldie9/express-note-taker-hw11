@@ -9,9 +9,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"))
 
-//points server to "route" files and gives server "map" for user to request data
-//require("./public")(app);
-//require("./public/index.html")(app);
+//routes that send user to correct html pages
+app.get("/notes", function(res) {
+    res.sendFile(path.join(__dirname, "notes.html"));
+});
+
+app.get("*", function(res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 
 //starts the server on the port
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
